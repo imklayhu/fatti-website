@@ -114,11 +114,18 @@
     </section>
 
     <!-- ===== 妖兽（T5 实现）=====
-         #beasts：16 只脂妖通缉卡司墙。T5 用 js/beasts.js 的 renderBeasts() 渲染
-         /assets/beasts/persona-{CODE}.png 小卡（名字 + 通缉号 TG-{CODE}）。 -->
+         #beasts：16 只脂妖通缉卡司墙，一笔带过。js/beasts.js 的 renderBeasts()
+         渲染 assets/beasts/persona-{CODE}.png 小卡（名字 + 通缉号 TG-{CODE}），
+         横排滚动；CTA 引流到 #howto 进小程序，官网不承载完整档案。 -->
     <section id="beasts" class="section beasts" aria-label="妖兽">
       <div class="container">
-        <!-- T5：妖兽小卡网格容器，由 renderBeasts(container) 填充。 -->
+        <div class="beasts__head">
+          <h2>先验个妖，才知道今天该不该动。</h2>
+        </div>
+        <div class="beasts__strip" id="beast-strip"><!-- JS 渲染 16 张小卡 --></div>
+        <div class="beasts__cta">
+          <a class="btn btn--primary" href="#howto">查看 16 只妖兽档案 →</a>
+        </div>
       </div>
     </section>
 

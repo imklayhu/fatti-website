@@ -583,3 +583,98 @@ p {
     order: -1;
   }
 }
+
+/* ---------- 妖兽区（T5） ---------- */
+.beasts {
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 64px;
+}
+
+.beasts__head {
+  max-width: 640px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.beasts__head h2 {
+  font-size: 1.7rem;
+}
+
+.beasts__strip {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin: 0 -20px;
+  padding: 8px 20px 20px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+
+.beast-card {
+  flex: 0 0 auto;
+  width: 44vw;
+  max-width: 176px;
+  scroll-snap-align: start;
+  transition: transform 0.2s ease;
+}
+
+.beast-card:hover {
+  transform: translateY(-6px);
+}
+
+.beast-card img {
+  width: 100%;
+  aspect-ratio: 9 / 10;
+  object-fit: cover;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+}
+
+.beast-card__info {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+.beast-card__name {
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.beast-card__id {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--carbon);
+}
+
+.beasts__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+/* 桌面端：妖兽区细化 */
+@media (min-width: 768px) {
+  .beasts {
+    scroll-margin-top: 72px;
+  }
+
+  .beasts__head h2 {
+    font-size: 1.9rem;
+  }
+
+  .beast-card {
+    width: 176px;
+  }
+}
+

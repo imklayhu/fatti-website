@@ -24,10 +24,25 @@ const BEASTS = [
   { code: 'MSCN', title: '歪理精', tagline: '什么都能掰出个科学道理。', danger: 4 }
 ]
 
-// T5 将实现妖兽小卡渲染（插画 + 名字 + 通缉号 TG-{code}）。
-// 渲染入口：遍历 BEASTS，用 /assets/beasts/persona-${code}.png 出图。
+// T5：妖兽小卡渲染（插画 + 名字 + 通缉号 TG-{code}）。
+// 渲染入口：遍历 BEASTS，用 assets/beasts/persona-${code}.png 出图，
+// 16 张小卡横排滚动插入 #beast-strip（或传入的 container）。
 function renderBeasts(container) {
-  // TODO(T5): 实现妖兽小卡渲染，现为空占位。
+  var el = container || document.getElementById('beast-strip')
+  if (!el) return
+
+  el.innerHTML = BEASTS.map(function (beast) {
+    return (
+      '<article class="beast-card">' +
+        '<img src="assets/beasts/persona-' + beast.code + '.png" alt="' +
+          beast.title + ' 妖兽插画" loading="lazy">' +
+        '<div class="beast-card__info">' +
+          '<span class="beast-card__name">' + beast.title + '</span>' +
+          '<span class="beast-card__id mono">TG-' + beast.code + '</span>' +
+        '</div>' +
+      '</article>'
+    )
+  }).join('')
 }
 
 // 供后续脚本（T5）使用的导出结构：直接读 window.BEASTS / window.renderBeasts
