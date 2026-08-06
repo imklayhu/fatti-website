@@ -38,11 +38,80 @@
     </section>
 
     <!-- ===== 控卡单（T4 实现）=====
-         #ration：当日控卡单交互区。T4 引入 js/granule.js，
-         落地「填 5 步档案 → AI 出当天四餐控卡单」的入口与渲染容器。 -->
+         #ration：当日控卡单交互区。顶部为热量颗粒条 Signature（js/granule.js 渲染
+         24 格，滚入逐格填充），下接 5 大功能点：功能点 1/2/5 左文右图、功能点 3
+         右文左图、功能点 4 全宽居中独白块，避免 3 连 zigzag。
+         截图先用现有图占位，img[data-shot] 标注 T7 目标截图名。 -->
     <section id="ration" class="section ration" aria-label="控卡单">
       <div class="container">
-        <!-- T4：控卡单表单 + 结果展示容器，本任务只占位。 -->
+        <div class="ration__head">
+          <h2>一天四餐，<br>从「明天开始」到「照着吃」</h2>
+          <div class="granule granule--signature" id="granule" data-budget="24" data-used="12" role="img" aria-label="热量颗粒条：24 格代表全天热量，已用 12 格墨色填充，剩余 12 格灰色"></div>
+          <p class="ration__note mono">已用 12 / 24 格</p>
+        </div>
+
+        <div class="features">
+          <!-- 功能点 1 · AI 出单：左文右图 -->
+          <article class="feature feature--text-left">
+            <div class="feature__copy">
+              <p class="feature__kicker mono">01 · AI 出单</p>
+              <h3>目标摄入，按你的缺口算</h3>
+              <p class="feature__desc">每天少吃 250 / 400 / 600 千卡，三档任选。<span class="mono">1450 千卡/天</span> 写在单子上，不是玄学。</p>
+            </div>
+            <figure class="feature__shot">
+              <img src="assets/home-hero.png" alt="占位图：功能点 1 的控卡单计划页上半截图，T7 将替换为 shot-plan-top.png" data-shot="shot-plan-top.png" loading="lazy">
+            </figure>
+          </article>
+
+          <!-- 功能点 2 · 四餐计划：左文右图 -->
+          <article class="feature feature--text-left">
+            <div class="feature__copy">
+              <p class="feature__kicker mono">02 · 四餐计划</p>
+              <h3>一整天四餐，照着吃就行</h3>
+              <p class="feature__desc">早餐、午餐、晚餐、加餐，每餐标好时间槽、菜名和热量。</p>
+            </div>
+            <figure class="feature__shot">
+              <img src="assets/beasts/persona-HGBT.png" alt="占位图：功能点 2 的控卡单计划页四餐部分截图，T7 将替换为 shot-plan-meals.png" data-shot="shot-plan-meals.png" loading="lazy">
+            </figure>
+          </article>
+
+          <!-- 功能点 3 · 换菜：右文左图 -->
+          <article class="feature feature--text-right">
+            <div class="feature__copy">
+              <p class="feature__kicker mono">03 · 换菜</p>
+              <h3>换一道同条件的菜</h3>
+              <p class="feature__desc">手头没食材？在同一热量档里换一道，食材分组表看清克重，做法编号一步步来。</p>
+            </div>
+            <figure class="feature__shot">
+              <img src="assets/beasts/persona-MGCT.png" alt="占位图：功能点 3 的餐次详情食材分组表截图，T7 将替换为 shot-meal.png" data-shot="shot-meal.png" loading="lazy">
+            </figure>
+          </article>
+
+          <!-- 功能点 4 · 热量对账：全宽居中独白（颗粒条居中 + 大字 mono 计数），打破 3 连 zigzag。
+               此处用在线颗粒条实时渲染，目标截图 shot-granule.png 同为颗粒条特写，
+               若 T7 需替换为真截图，可在此块内补 <img data-shot="shot-granule.png">。 -->
+          <article class="feature feature--monologue">
+            <p class="feature__kicker mono">04 · 热量对账</p>
+            <h3>已用 vs 剩余，颗粒条一屏看穿</h3>
+            <div class="granule feature__granule" data-budget="24" data-used="12" role="img" aria-label="热量颗粒条：24 格代表全天热量，已用 12 格墨色填充，剩余 12 格灰色"></div>
+            <p class="feature__mono mono">已用 12 / 24</p>
+            <p class="feature__desc">24 格颗粒条实时对账：达标墨色、超限整条转红，今天吃没吃超一目了然。</p>
+          </article>
+
+          <!-- 功能点 5 · 打卡与日历：左文右图 -->
+          <article class="feature feature--text-left">
+            <div class="feature__copy">
+              <p class="feature__kicker mono">05 · 打卡与日历</p>
+              <h3>吃完打勾，攒成控卡日程</h3>
+              <p class="feature__desc">四餐三态打卡 + 饮水标记，日历回看，别让「明天开始」再骗你。</p>
+            </div>
+            <figure class="feature__shot">
+              <img src="assets/beasts/persona-HSCT.png" alt="占位图：功能点 5 的日历打卡截图，T7 将替换为 shot-calendar.png" data-shot="shot-calendar.png" loading="lazy">
+            </figure>
+          </article>
+        </div>
+
+        <p class="ration__more"><a href="#howto">去小程序试试 →</a></p>
       </div>
     </section>
 
@@ -77,5 +146,6 @@
   </footer>
 
   <script src="js/beasts.js" defer></script>
+  <script src="js/granule.js" defer></script>
 </body>
 </html>
