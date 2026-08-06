@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>脂格 · 控卡减脂小程序</title>
+  <meta name="description" content="填 5 步档案，AI 出当天四餐控卡单。微信搜「脂格」免费体验。">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#ration">跳到主要内容</a>
+
+  <header class="nav">
+    <a class="nav__brand" href="#">FatTI · 脂格</a>
+    <nav class="nav__links" aria-label="主导航">
+      <a href="#ration">控卡单</a>
+      <a href="#beasts">妖兽</a>
+      <a href="#howto">使用</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ===== Hero（T3 实现）=====
+         首屏主视觉：铁馆场景图（assets/home-hero.png）作背景 + 一句主标语 +
+         两个 CTA（体验控卡单 / 看妖兽卡司），可再放小程序码或「微信搜脂格」入口。 -->
+    <section id="hero" class="hero" aria-label="脂格介绍">
+      <div class="container">
+        <!-- T3：hero 文案、CTA、视觉排版均在此容器内完成。 -->
+      </div>
+    </section>
+
+    <!-- ===== 控卡单（T4 实现）=====
+         #ration：当日控卡单交互区。T4 引入 js/granule.js，
+         落地「填 5 步档案 → AI 出当天四餐控卡单」的入口与渲染容器。 -->
+    <section id="ration" class="section ration" aria-label="控卡单">
+      <div class="container">
+        <!-- T4：控卡单表单 + 结果展示容器，本任务只占位。 -->
+      </div>
+    </section>
+
+    <!-- ===== 妖兽（T5 实现）=====
+         #beasts：16 只脂妖通缉卡司墙。T5 用 js/beasts.js 的 renderBeasts() 渲染
+         /assets/beasts/persona-{CODE}.png 小卡（名字 + 通缉号 TG-{CODE}）。 -->
+    <section id="beasts" class="section beasts" aria-label="妖兽">
+      <div class="container">
+        <!-- T5：妖兽小卡网格容器，由 renderBeasts(container) 填充。 -->
+      </div>
+    </section>
+
+    <!-- ===== 使用（T6 实现）=====
+         #howto：三步/四步使用说明，讲清「填档案 → 拿控卡 → 照单吃」。 -->
+    <section id="howto" class="section howto" aria-label="使用说明">
+      <div class="container">
+        <!-- T6：使用步骤列表。 -->
+      </div>
+    </section>
+
+    <!-- ===== FAQ（T6 实现）=====
+         #faq：常见问题折叠区，T6 创建 js/faq.js 并渲染。 -->
+    <section id="faq" class="section faq" aria-label="常见问题">
+      <div class="container">
+        <!-- T6：FAQ 折叠项容器。 -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <!-- Footer（T6 补充）：品牌名、版权行、免责与备案声明。 -->
+  </footer>
+
+  <script src="js/beasts.js" defer></script>
+</body>
+</html>

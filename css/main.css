@@ -1,0 +1,280 @@
+/* ============================================================
+   FatTI 脂格官网 · 基础样式
+   Token 对齐 spec §3.3/§3.4；Hero 具体样式由 T3 实现。
+   ============================================================ */
+
+:root {
+  --paper: #f7f5f0;
+  --ink: #243147;
+  --accent: #c81e3a;
+  --amber: #e6b422;
+  --carbon: #5c6b7a;
+  --rule: rgba(36, 49, 71, 0.14);
+  --sheet: #ffffff;
+  --font-cjk: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-mono: Menlo, "SF Mono", monospace;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-cjk);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* 可见键盘焦点 */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- 排版基元 ---------- */
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+p {
+  color: var(--ink);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 容器与节距 ---------- */
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 64px 0;
+}
+
+.section__head {
+  margin-bottom: 32px;
+}
+
+.section__title {
+  font-size: 1.6rem;
+}
+
+.section__sub {
+  margin-top: 8px;
+  color: var(--carbon);
+  font-size: 0.95rem;
+}
+
+/* ---------- 响应式网格基础（移动端单列，桌面多列） ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- Nav ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 64px;
+  padding: 0 20px;
+  background: var(--sheet);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav__brand {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  white-space: nowrap;
+}
+
+.nav__links a {
+  font-size: 0.95rem;
+  color: var(--carbon);
+  transition: color 0.2s ease;
+}
+
+.nav__links a:hover {
+  color: var(--ink);
+}
+
+.nav__links a:focus-visible {
+  color: var(--ink);
+}
+
+/* ---------- 按钮 ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.btn--primary:hover {
+  background: #a91731;
+}
+
+.btn--ghost {
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  background: transparent;
+}
+
+.btn--ghost:hover {
+  border-color: var(--ink);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* ---------- 跳转链接（无障碍） ---------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: 8px 16px;
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--carbon);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--rule);
+}
+
+/* ---------- 动效降级（prefers-reduced-motion） ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- 桌面端细化 ---------- */
+@media (min-width: 768px) {
+  .nav {
+    height: 72px;
+    padding: 0 32px;
+  }
+
+  .section {
+    padding: 88px 0;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+  }
+
+  h2 {
+    font-size: 1.9rem;
+  }
+}
