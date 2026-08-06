@@ -1,4 +1,4 @@
-// FatTI 脂格 · 热量颗粒条（CalorieGranuleBar）
+// FatTI 找到狡猾的猪腰 · 热量颗粒条（CalorieGranuleBar）
 // 24 格代表全天热量：已用逐格填充、超限整条转红。
 // 滚入视口后按 --i 依次填充（只动 transform/opacity）；
 // prefers-reduced-motion 下跳过监听，直接落终态。

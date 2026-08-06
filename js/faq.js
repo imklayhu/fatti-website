@@ -1,4 +1,4 @@
-// FatTI 脂格 · FAQ 手风琴
+// FatTI 找到狡猾的猪腰 · FAQ 手风琴
 // 点击问题按钮展开答案，一次只开一条（互斥）。
 // 只切换 .faq__item--open 与 aria-expanded / aria-controls，
 // 高度动效由 CSS grid-template-rows transition 承担；
