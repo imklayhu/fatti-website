@@ -50,3 +50,11 @@ if (typeof window !== 'undefined') {
   window.BEASTS = BEASTS
   window.renderBeasts = renderBeasts
 }
+
+// 自执行渲染入口（参照 js/granule.js 的 IIFE 写法）。
+// 脚本以 defer 加载，执行时 DOM 已就绪，直接渲染到 #beast-strip。
+// 渲染为静态 innerHTML、无入场动画，reduced-motion 与否都直接落终态，
+// 故无需 matchMedia / IntersectionObserver 分流。
+(() => {
+  renderBeasts()
+})()
