@@ -238,11 +238,53 @@ p {
 
 /* ---------- Footer ---------- */
 .footer {
-  padding: 32px 20px;
+  padding: 48px 20px 40px;
   text-align: center;
   color: var(--carbon);
   font-size: 0.85rem;
   border-top: 1px solid var(--rule);
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer__brand {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.footer__tagline {
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+
+.footer__search {
+  padding: 4px 16px;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+}
+
+.footer__disclaimer {
+  max-width: 640px;
+  margin: 6px auto 0;
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: var(--carbon);
+}
+
+.footer__copy {
+  margin-top: 4px;
+  font-size: 0.82rem;
+  color: var(--carbon);
 }
 
 /* ---------- 动效降级（prefers-reduced-motion） ---------- */
@@ -675,6 +717,205 @@ p {
 
   .beast-card {
     width: 176px;
+  }
+}
+
+/* ---------- 使用步骤（T6） ---------- */
+.howto {
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 64px;
+}
+
+.howto__head {
+  max-width: 640px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.howto__head h2 {
+  font-size: 1.7rem;
+}
+
+.howto__sub {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: var(--carbon);
+}
+
+.howto__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.howto__step {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 148px;
+  padding: 24px 20px;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  box-shadow: 0 12px 24px rgba(36, 49, 71, 0.08);
+}
+
+.howto__num {
+  font-size: 2.2rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.howto__text {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+/* 小程序码占位（T7 或后续补真图）：虚线档案框 */
+.howto__qr-box {
+  width: 100%;
+  height: 96px;
+  border: 1px dashed var(--rule);
+  background: repeating-linear-gradient(
+    45deg,
+    var(--sheet) 0,
+    var(--sheet) 8px,
+    rgba(36, 49, 71, 0.03) 8px,
+    rgba(36, 49, 71, 0.03) 16px
+  );
+}
+
+@media (min-width: 768px) {
+  .howto {
+    scroll-margin-top: 72px;
+  }
+
+  .howto__head h2 {
+    font-size: 1.9rem;
+  }
+
+  .howto__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+/* ---------- FAQ（T6） ---------- */
+.faq {
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 64px;
+}
+
+.faq__head {
+  max-width: 640px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.faq__head h2 {
+  font-size: 1.7rem;
+}
+
+.faq__sub {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: var(--carbon);
+}
+
+.faq__list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq__item {
+  border-top: 1px solid var(--rule);
+}
+
+.faq__item:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 4px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.faq__q:hover {
+  color: var(--accent);
+}
+
+.faq__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+
+.faq__icon::before,
+.faq__icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 14px;
+  height: 2px;
+  background: var(--carbon);
+  transform: translateY(-50%);
+}
+
+.faq__icon::after {
+  transform: translateY(-50%) rotate(90deg);
+  transition: transform 0.25s ease;
+}
+
+.faq__item--open .faq__icon::after {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+/* 高度动效：grid-template-rows 0fr 到 1fr，免 JS 测量 */
+.faq__a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.faq__a-inner {
+  overflow: hidden;
+}
+
+.faq__a p {
+  padding: 0 4px 18px;
+  font-size: 0.96rem;
+  line-height: 1.9;
+  color: var(--carbon);
+}
+
+.faq__item--open .faq__a {
+  grid-template-rows: 1fr;
+}
+
+@media (min-width: 768px) {
+  .faq {
+    scroll-margin-top: 72px;
+  }
+
+  .faq__head h2 {
+    font-size: 1.9rem;
   }
 }
 
