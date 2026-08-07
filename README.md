@@ -41,7 +41,7 @@ FatTI 控卡小程序是一个 AI 减脂工具：填 5 步档案（身体、作�
 ├── assets/
 │   ├── shots/          # 小程序模拟器截图（控卡首页/今日执行/餐次/日历）
 │   ├── beasts/         # 16 张妖兽插画
-│   └── mp-qrcode.png   # 小程序码
+│   └── mp-qrcode.jpg   # 小程序码
 ├── scripts/verify.mjs  # 上线自检脚本
 └── CNAME               # 自定义域名
 ```
@@ -71,7 +71,7 @@ node scripts/verify.mjs
 
 - 控卡截图：微信开发者工具模拟器截图（`assets/shots/*.jpg`），来自小程序「控卡首页 / 今日执行 / 餐次详情 / 日程」页面。
 - 妖兽插画：小程序插画资产（`assets/beasts/persona-*.png`），与小程序 16 只脂妖一一对应。
-- 小程序码：微信小程序后台生成的普通链接二维码（`assets/mp-qrcode.png`）。
+- 小程序码：微信小程序后台生成的普通链接二维码（`assets/mp-qrcode.jpg`）。
 
 ## 相关项目
 

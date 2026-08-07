@@ -11,6 +11,14 @@
   --carbon: #5c6b7a;
   --rule: rgba(36, 49, 71, 0.14);
   --sheet: #ffffff;
+  /* 暖萌 tokens（对齐小程序 tokens.scss 2026-08-07）：胶带黄 / 米白卡身 / 阳光黄高光 / 腮红粉 */
+  --tape: #e6b422;
+  --cream: #fff4e0;
+  --sun: #ffd23f;
+  --blush: #ffd9c0;
+  --cream-wash: rgba(255, 244, 224, 0.6);
+  --sun-wash: rgba(255, 210, 63, 0.12);
+  --blush-wash: rgba(255, 217, 192, 0.35);
   --font-cjk: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
   --font-mono: Menlo, "SF Mono", monospace;
 }
@@ -775,15 +783,64 @@ p {
 }
 
 .howto__step {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 14px;
+  gap: 10px;
   min-height: 148px;
-  padding: 24px 20px;
+  padding: 26px 22px 22px;
   background: var(--sheet);
   border: 1px solid var(--rule);
+  border-radius: 20px;
   box-shadow: 0 12px 24px rgba(36, 49, 71, 0.08);
+}
+
+/* 胶带角标（暖萌签名）：白卡左上角贴一条小黄胶带，同款小程序 card-surface 视觉语言 */
+.howto__tape {
+  position: absolute;
+  top: -6px;
+  left: 22px;
+  width: 44px;
+  height: 16px;
+  background: var(--tape);
+  border-radius: 2px;
+  transform: rotate(-4deg);
+  opacity: 0.92;
+  animation: howto-tape-in 0.32s ease-out both;
+}
+
+/* 胶带一点撕口：左端不规则 */
+.howto__tape::before,
+.howto__tape::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.howto__tape::before {
+  left: 8px;
+  transform: rotate(-4deg);
+}
+
+.howto__tape::after {
+  right: 8px;
+  transform: rotate(6deg);
+}
+
+@keyframes howto-tape-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) rotate(-4deg);
+  }
+
+  to {
+    opacity: 0.92;
+    transform: translateY(0) rotate(-4deg);
+  }
 }
 
 .howto__num {
@@ -793,10 +850,35 @@ p {
   color: var(--accent);
 }
 
+.howto__title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
 .howto__text {
-  font-size: 1rem;
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--carbon);
+}
+
+/* 具体细节/小提示：阳光黄淡底小条，暖萌点缀 */
+.howto__tip {
+  align-self: flex-start;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--sun-wash);
+  border-radius: 8px;
+}
+
+/* 小程序码卡片：文字恢复强调权重 */
+.howto__step--qr .howto__text {
   font-weight: 600;
-  line-height: 1.7;
   color: var(--ink);
 }
 
