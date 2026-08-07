@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fdfbf6"/>
+      <stop offset="1" stop-color="#f3ecdd"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="2" y="2" width="60" height="60" rx="13" fill="url(#paper)" stroke="#ddd3bf" stroke-width="1.2"/>
+
+  <line x1="10" y1="55" x2="54" y2="55" stroke="#ddd3bf" stroke-width="1" opacity="0.7"/>
+
+  <circle cx="32" cy="31" r="23.5" fill="none" stroke="#c02336" stroke-width="3.1"/>
+  <circle cx="32" cy="31" r="19.6" fill="none" stroke="#c02336" stroke-width="1"/>
+
+  <text x="32" y="40.5" text-anchor="middle" font-family="'PingFang SC','Songti SC','SimSun',serif" font-size="25.5" font-weight="900" fill="#c02336" letter-spacing="-1">猪</text>
+</svg>

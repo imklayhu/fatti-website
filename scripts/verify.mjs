@@ -46,5 +46,16 @@ if (btnCount !== 3) fail(`预期 3 个按钮 (主 CTA/副 CTA/妖兽 CTA), 实�
 // ⑥ 免责含「梗出处」
 if (!html.includes('梗出处')) fail('缺免责「梗出处」')
 
+// ⑦ favicon 全套存在且被引用（svg + ico + apple-touch-icon + 多尺寸）
+const faviconLinks = [
+  ['assets/favicon.svg', 'favicon.svg'],
+  ['assets/favicon.ico', 'favicon.ico'],
+  ['assets/favicon-180.png', 'apple-touch-icon'],
+]
+for (const [path, label] of faviconLinks) {
+  if (!existsSync(resolve(root, path))) fail(`缺 favicon: ${path}`)
+  if (!html.includes(path)) fail(`index.html 未引用 ${label} (${path})`)
+}
+
 console.log(failures === 0 ? 'verify: all ok' : `verify: ${failures} failures`)
 process.exit(failures === 0 ? 0 : 1)
