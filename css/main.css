@@ -352,6 +352,29 @@ p {
   margin-top: 32px;
 }
 
+.hero__qr {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.hero__qr img {
+  width: 96px;
+  height: 96px;
+  padding: 6px;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  box-shadow: 0 8px 18px rgba(36, 49, 71, 0.12);
+}
+
+.hero__qr-hint {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--carbon);
+}
+
 .hero__shot {
   transform: rotate(1.6deg);
   animation: hero-sticker 0.8s ease both;
@@ -777,18 +800,21 @@ p {
   color: var(--ink);
 }
 
-/* 小程序码占位（T7 或后续补真图）：虚线档案框 */
+/* 小程序码（真实图）：白色档案卡底 + 轻边框 */
 .howto__qr-box {
   width: 100%;
-  height: 96px;
-  border: 1px dashed var(--rule);
-  background: repeating-linear-gradient(
-    45deg,
-    var(--sheet) 0,
-    var(--sheet) 8px,
-    rgba(36, 49, 71, 0.03) 8px,
-    rgba(36, 49, 71, 0.03) 16px
-  );
+  max-width: 168px;
+  margin: 0 auto;
+  padding: 10px;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  box-shadow: 0 10px 22px rgba(36, 49, 71, 0.1);
+}
+
+.howto__qr-box img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 @media (min-width: 768px) {
