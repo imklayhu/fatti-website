@@ -281,6 +281,21 @@ p {
   border: 1px solid var(--rule);
 }
 
+.footer__contact {
+  font-size: 0.9rem;
+}
+
+.footer__contact a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+}
+
+.footer__contact a:hover {
+  opacity: 0.8;
+}
+
 .footer__disclaimer {
   max-width: 640px;
   margin: 6px auto 0;

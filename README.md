@@ -20,7 +20,25 @@ FatTI 控卡小程序是一个 AI 减脂工具：填 5 步档案（身体、作�
 | 妖兽墙 | 16 只脂妖插画卡横排（测脂格彩蛋入口） |
 | 使用步骤 | 三步进馆：打开小程序 → 填档案 → 出单照着吃 |
 | FAQ | 常见问题手风琴 |
+| 跟练教程 | 独立长文页 `tutorial.html`：从 0 到 1 用 AI 做出你的微信小程序（12 章 + 3 附录） |
 | Footer | 免责声明 + 梗出处标注 |
+
+## 跟练教程（tutorial.html）
+
+内容源位于本仓库 `tutorial-md/*.md`（此前在 FatTI 仓库 `docs/ops/tutorial/`，已迁移并改为软链接），本仓库 `scripts/build-tutorial.mjs` 把源文编译为 `tutorial.html`（零依赖 markdown 子集解析 + 官网 tokens 模板），并自动生成 `assets/tutorial/Sxx.svg` 截图占位图。
+
+```bash
+# 内容更新后重新编译（不传参时默认使用本仓库 tutorial-md/）
+node scripts/build-tutorial.mjs tutorial-md
+
+# 上线自检（含教程页断言）
+node scripts/verify.mjs
+```
+
+约定：
+- 教程 md 源文只在本仓库 `tutorial-md/` 维护；FatTI 仓库 `docs/ops/tutorial/` 与规划文档均为指向此处的软链接
+- 用户截图按 S01~S43 编号补充，替换 `assets/tutorial/Sxx.svg` 或改 `tutorial.html` 中对应 `src`
+- 截图占位 / 章节结构 / 隐私占位符由 verify 与构建时 lint 双重把关
 
 ## 技术栈
 
@@ -33,16 +51,24 @@ FatTI 控卡小程序是一个 AI 减脂工具：填 5 步档案（身体、作�
 
 ```
 ├── index.html          # 单页全部板块
-├── css/main.css        # 设计 token + 板块样式（响应式）
+├── tutorial.html       # 跟练教程长文页（由脚本生成，勿手改）
+├── tutorial-md/        # 教程 md 源文（00-preface.md 至 12-iterate.md + 3 附录 + 规划文档）
+├── css/
+│   ├── main.css        # 设计 token + 板块样式（响应式）
+│   └── tutorial.css    # 教程页样式（复用 main.css tokens）
 ├── js/
 │   ├── beasts.js       # 16 只脂妖数据 + 妖兽墙渲染
 │   ├── granule.js      # 24 格热量颗粒条
-│   └── faq.js          # FAQ 手风琴
+│   ├── faq.js          # FAQ 手风琴
+│   └── tutorial.js     # 教程目录滚动高亮 + 截图占位提示
 ├── assets/
 │   ├── shots/          # 小程序模拟器截图（控卡首页/今日执行/餐次/日历）
 │   ├── beasts/         # 16 张妖兽插画
+│   ├── tutorial/       # 教程截图占位（S01~S43.svg）+ 技术栈关系图
 │   └── mp-qrcode.jpg   # 小程序码
-├── scripts/verify.mjs  # 上线自检脚本
+├── scripts/
+│   ├── verify.mjs      # 上线自检脚本（含教程页断言）
+│   └── build-tutorial.mjs  # md 源文 → tutorial.html 编译脚本
 └── CNAME               # 自定义域名
 ```
 

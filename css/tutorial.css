@@ -1,0 +1,508 @@
+/* ============================================================
+   FatTI 官网 · 跟练教程页样式
+   复用 main.css 的 :root tokens（不新增色板），沿用档案室 + 暖萌视觉语言。
+   新增约定：正文窄栏 / 章节卡胶带角标 / 截图占位符 / 表格 / 代码块。
+   ============================================================ */
+
+/* ---------- 教程页 Hero ---------- */
+.tut-hero {
+  padding: 72px 0 56px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.tut-hero__eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 4px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--carbon);
+  border: 1px solid var(--rule);
+  background: var(--sheet);
+}
+
+.tut-hero h1 {
+  max-width: 14em;
+  font-size: 2rem;
+  line-height: 1.35;
+}
+
+.tut-hero__sub {
+  max-width: 40em;
+  margin-top: 18px;
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: var(--carbon);
+}
+
+.tut-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.tut-hero__pill {
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--sun-wash);
+  border-radius: 8px;
+}
+
+.tut-hero__qr {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.tut-hero__qr img {
+  width: 96px;
+  height: 96px;
+  padding: 6px;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  box-shadow: 0 8px 18px rgba(36, 49, 71, 0.12);
+}
+
+.tut-hero__qr-hint {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--carbon);
+}
+
+/* ---------- 章节目录（sticky） ---------- */
+.tut-toc {
+  position: sticky;
+  top: 64px;
+  z-index: 90;
+  padding: 10px 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+.tut-toc__inner {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+
+.tut-toc a {
+  flex: 0 0 auto;
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--carbon);
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.tut-toc a:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.tut-toc a.is-active {
+  color: var(--sheet);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- 章节正文 ---------- */
+.tut-body {
+  padding: 56px 0 24px;
+}
+
+.tut-chapter {
+  scroll-margin-top: 120px;
+  margin-bottom: 72px;
+}
+
+.tut-chapter__head {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding: 26px 24px 22px;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(36, 49, 71, 0.08);
+}
+
+.tut-chapter__tape {
+  position: absolute;
+  top: -6px;
+  left: 24px;
+  width: 44px;
+  height: 16px;
+  background: var(--tape);
+  border-radius: 2px;
+  transform: rotate(-4deg);
+  opacity: 0.92;
+}
+
+.tut-chapter__num {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.tut-chapter__title {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+.tut-chapter__goal {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--carbon);
+}
+
+/* 正文内容（窄栏保证长文可读性） */
+.tut-content {
+  max-width: 820px;
+}
+
+.tut-content h3 {
+  margin: 40px 0 14px;
+  font-size: 1.22rem;
+}
+
+.tut-content h4 {
+  margin: 28px 0 10px;
+  font-size: 1.05rem;
+}
+
+.tut-content p {
+  margin: 12px 0;
+  font-size: 0.98rem;
+  line-height: 2;
+  color: var(--ink);
+}
+
+.tut-content strong {
+  font-weight: 700;
+}
+
+.tut-content ul,
+.tut-content ol {
+  margin: 12px 0 12px 24px;
+  font-size: 0.96rem;
+  line-height: 1.95;
+  color: var(--ink);
+}
+
+.tut-content li {
+  margin: 6px 0;
+}
+
+/* 类比块（暖萌黄底小条，与 howto__tip 呼应） */
+.tut-note {
+  margin: 20px 0;
+  padding: 14px 16px;
+  font-size: 0.92rem;
+  line-height: 1.9;
+  color: var(--ink);
+  background: var(--sun-wash);
+  border-radius: 12px;
+}
+
+.tut-note--blush {
+  background: var(--blush-wash);
+}
+
+.tut-note__label {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--carbon);
+}
+
+/* 截图占位符：白卡 + 虚线框 + mono 编号 */
+.tut-shot {
+  margin: 24px 0;
+  padding: 14px;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(36, 49, 71, 0.08);
+}
+
+.tut-shot__frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 28px 16px;
+  border: 2px dashed var(--rule);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.tut-shot__frame img {
+  max-width: 100%;
+  max-height: 420px;
+  border: 1px solid var(--rule);
+}
+
+.tut-shot__id {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--carbon);
+}
+
+.tut-shot__cap {
+  margin-top: 10px;
+  padding: 0 4px;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--carbon);
+}
+
+.tut-shot--empty .tut-shot__frame {
+  color: var(--carbon);
+  font-size: 0.88rem;
+  line-height: 1.9;
+}
+
+/* 代码块与内联码 */
+.tut-content pre {
+  margin: 16px 0;
+  padding: 16px 18px;
+  overflow-x: auto;
+  font-size: 0.84rem;
+  line-height: 1.7;
+  color: var(--sheet);
+  background: var(--ink);
+  border-radius: 12px;
+}
+
+.tut-content pre code {
+  font-family: var(--font-mono);
+}
+
+.tut-content code {
+  padding: 1px 6px;
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  color: var(--accent);
+  background: var(--cream-wash);
+  border-radius: 5px;
+}
+
+.tut-content pre code {
+  padding: 0;
+  color: inherit;
+  background: none;
+}
+
+/* 表格（预算/清单/skills） */
+.tut-table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tut-table th,
+.tut-table td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+.tut-table th {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--carbon);
+  background: var(--cream-wash);
+}
+
+.tut-table tr:last-child th,
+.tut-table tr:last-child td {
+  border-bottom: none;
+}
+
+.tut-table td {
+  color: var(--ink);
+}
+
+/* 自查清单 */
+.tut-checklist {
+  margin: 28px 0;
+  padding: 20px 22px;
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(36, 49, 71, 0.06);
+}
+
+.tut-checklist__title {
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--carbon);
+}
+
+.tut-checklist ul {
+  margin: 0;
+  list-style: none;
+}
+
+.tut-checklist li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 0.94rem;
+}
+
+.tut-checklist li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* 本章小结（blush 高亮条） */
+.tut-summary {
+  margin: 32px 0 0;
+  padding: 18px 22px;
+  background: var(--blush-wash);
+  border-left: 3px solid var(--blush);
+  border-radius: 12px;
+}
+
+.tut-summary__title {
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--carbon);
+}
+
+.tut-summary ul {
+  margin: 0 0 0 20px;
+  font-size: 0.94rem;
+  line-height: 1.9;
+  color: var(--ink);
+}
+
+.tut-summary li {
+  margin: 4px 0;
+}
+
+/* 章节尾导航（上一章/下一章） */
+.tut-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 24px 0 8px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+}
+
+.tut-pager a {
+  max-width: 48%;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--sheet);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.tut-pager a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.tut-pager .is-next {
+  margin-left: auto;
+  text-align: right;
+}
+
+.tut-pager__dir {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--carbon);
+}
+
+/* ---------- 底部 CTA ---------- */
+.tut-cta {
+  padding: 64px 0;
+  text-align: center;
+  border-top: 1px solid var(--rule);
+  background: repeating-linear-gradient(
+    180deg,
+    var(--paper) 0,
+    var(--paper) 21px,
+    rgba(36, 49, 71, 0.05) 21px,
+    rgba(36, 49, 71, 0.05) 22px
+  );
+}
+
+.tut-cta h2 {
+  font-size: 1.5rem;
+}
+
+.tut-cta p {
+  max-width: 34em;
+  margin: 12px auto 24px;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--carbon);
+}
+
+/* ---------- 响应式 ---------- */
+@media (min-width: 768px) {
+  .tut-hero {
+    padding: 96px 0 64px;
+  }
+
+  .tut-hero h1 {
+    font-size: 2.6rem;
+  }
+
+  .tut-toc {
+    top: 72px;
+  }
+
+  .tut-body {
+    padding: 72px 0 32px;
+  }
+
+  .tut-chapter__title {
+    font-size: 1.7rem;
+  }
+
+  .tut-shot__frame {
+    min-height: 260px;
+  }
+}

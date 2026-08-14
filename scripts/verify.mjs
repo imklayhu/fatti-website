@@ -1,5 +1,6 @@
 // scripts/verify.mjs —— node scripts/verify.mjs
 // 官网零依赖验证：图片存在 / 零 dash / 妖兽 16 只 / 控卡 5 功能点 / CTA 唯一 / 免责梗出处
+// 教程页：tutorial.html 存在 / 12+ 章节 / 截图占位符规范 / 零 dash
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -55,6 +56,34 @@ const faviconLinks = [
 for (const [path, label] of faviconLinks) {
   if (!existsSync(resolve(root, path))) fail(`缺 favicon: ${path}`)
   if (!html.includes(path)) fail(`index.html 未引用 ${label} (${path})`)
+}
+
+// ---------- 教程页（tutorial.html） ----------
+const tutorialPath = resolve(root, 'tutorial.html')
+if (!existsSync(tutorialPath)) {
+  fail('缺教程页 tutorial.html')
+} else {
+  const tutHtml = readFileSync(tutorialPath, 'utf8')
+
+  // ⑧ 零 em-dash 与 en-dash
+  for (const ch of ['\u2014', '\u2013']) {
+    if (tutHtml.includes(ch)) fail(`tutorial.html 含 em/en-dash: ${JSON.stringify(ch)}`)
+  }
+
+  // ⑨ 章节数 ≥ 12（序 + 12 章 + 附录，至少 12 个教程章节卡）
+  const chapterCount = (tutHtml.match(/class="tut-chapter"/g) || []).length
+  if (chapterCount < 12) fail(`教程章节应 ≥12, 实际 ${chapterCount}`)
+
+  // ⑩ 截图占位符：至少 5 张，且图片资源存在（src 指向 assets/tutorial/）
+  const shots = [...tutHtml.matchAll(/data-shot="([^"]+)"/g)].map((m) => m[1])
+  if (shots.length < 5) fail(`截图占位符应 ≥5, 实际 ${shots.length}`)
+  const shotImgs = [...tutHtml.matchAll(/src="(assets\/tutorial\/[^"]+)"/g)].map((m) => m[1])
+  for (const src of shotImgs) {
+    if (!existsSync(resolve(root, src))) fail(`缺教程图: ${src}`)
+  }
+
+  // ⑪ 导航含教程入口
+  if (!html.includes('tutorial.html')) fail('index.html 导航缺教程入口')
 }
 
 console.log(failures === 0 ? 'verify: all ok' : `verify: ${failures} failures`)
