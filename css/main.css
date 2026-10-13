@@ -304,6 +304,44 @@ p {
   color: var(--carbon);
 }
 
+
+.footer__friends {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 18px;
+  margin-top: 4px;
+}
+
+.footer__friends-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--carbon);
+}
+
+.footer__friends-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__friends-list a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+}
+
+.footer__friends-list a:hover {
+  border-bottom-color: var(--accent);
+}
+
 .footer__copy {
   margin-top: 4px;
   font-size: 0.82rem;
